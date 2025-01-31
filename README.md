@@ -6,6 +6,7 @@ A Simple Flutter Desktop application powered by Flutter WebRTC to deliver real t
 
 This guide provides step-by-step instructions on setting up and running the Flutter WebRTC implementation using Flutter Desktop and Mobile.
 
+
 # Purpose of the System
 
 The purpose of this system is for the desktop application to capture screenshots and stream them to the mobile application, where they are displayed in real time.
@@ -20,32 +21,36 @@ Before starting, ensure the following:
 
 # Setup & Execution
 
-1. Enable ICMP Protocol
+### 1. Enable ICMP Protocol
 
   Ensure that ICMP is enabled to allow network connectivity verification via ping. This step ensures the mobile device can communicate with the desktop application.
   * On Windows, open Command Prompt as Administrator and run:
   * netsh advfirewall firewall add rule name="Allow ICMPv4-In" protocol=icmpv4:any,any dir=in action=allow
   * On Linux/macOS, ICMP is usually enabled by default. If disabled, adjust firewall settings accordingly.
 
-2. Start the Socket.IO Signaling Server
+### 2. Start the Socket.IO Signaling Server
+   Socket.IO needs to be hosted for real-time communication between the devices:
 
-  * Open a terminal or command prompt.
-  * Navigate to the directory containing the Socket.IO server script.
-  * Start the server by running:
-  * node index.js
-  * Ensure the server is running before proceeding to the next steps.
+  #### Host using XAMPP:
+  * Download and install XAMPP (if not already installed).
+  * Create a directory for the Socket.IO server (e.g., C:\xampp\htdocs\socket_server).
+  * Place your index.js file in the directory.
+  * Start the XAMPP Control Panel and launch Apache and MySQL (if needed).
+  * Open a terminal and navigate to the XAMPP directory, then start the server: node C:\xampp\htdocs\socket_server\index.js
+  * Ensure the server is accessible through the IP address or domain.
+  * You can now use the XAMPP-hosted Socket.IO server for signaling between devices.
 
-3. Start the Desktop Application
+### 3. Start the Desktop Application
 
   * Launch the Flutter Desktop application.
   * Click "Start/Restart Broadcasting" to initiate the WebRTC offer/answer mechanism.
   * The application will generate an offer, and upon receiving an answer from the mobile, it will exchange ICE candidates to establish a connection.
 
-4. Begin Screen Capturing
+### 4. Begin Screen Capturing
 
-  * Once the WebRTC connection is established (offer/answer and ICE candidates are exchanged), the desktop application will begin capturing and streaming images.
+  * Press "Start Screenshot" to start the connection and start the image streaming. Press "End Stream" to stop the streaming
 
-5. Connect the Mobile Application
+### 5. Connect the Mobile Application
 
   * Open the Flutter Mobile application.
   * Wait for the desktop application to successfully establish a WebRTC connection with the mobile device.
