@@ -1,6 +1,6 @@
-# flutterdesktopwebrtc
+# Flutter Desktop Screenshot Capture
 
-A new Flutter project.
+A Flutter Desktop application powered by Flutter WebRTC to deliver real time communication between devices. Goal is to capture screenshot of the desktop app and stream to the devices(mobile) and display the images.
 
 ## Getting Started
 
